@@ -1,7 +1,14 @@
 import { Text as RNText, TextProps, StyleSheet } from "react-native";
 import { colors } from "../themes/colors";
 
-type Variant = "h1" | "h2" | "body" | "caption";
+type Variant =
+  | "h1"
+  | "h2"
+  | "body"
+  | "caption"
+  | "lable"
+  | "requiredLable"
+  | "invalidInput";
 
 /**
  * Props of the custom Text component.
@@ -47,5 +54,23 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     fontSize: 12,
     color: colors.textSecondary,
+  },
+  lable: {
+    fontFamily: "Roboto",
+    fontWeight: "700",
+    fontSize: 16,
+    color: colors.textPrimary,
+  },
+  requiredLable: {
+    fontFamily: "Roboto",
+    fontWeight: "700",
+    fontSize: 16,
+    color: colors.coralSignal,
+  },
+  invalidInput: {
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    fontSize: 12,
+    color: colors.error,
   },
 });

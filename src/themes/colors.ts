@@ -17,7 +17,7 @@ export const colors = {
   coralPressed: "#CF5230",
 
   // Status & Notfall
-  alarm: "#D64545",
+  error: "#D64545",
   warning: "#E0A83E",
   success: "#6FAE7F",
   info: "#6E9BC4",
