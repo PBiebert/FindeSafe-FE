@@ -6,12 +6,11 @@ import {
   Image,
   ScrollView,
   KeyboardAvoidingView,
-  Pressable,
 } from "react-native";
 import { colors } from "../../themes/colors";
 import { Text } from "../../components/text";
 import { FormField } from "../../components/form-field";
-import MaterialIcons from "@react-native-vector-icons/material-icons";
+import { CheckboxField } from "../../components/checkbox-field";
 
 /** Union of text field names, used for type-safe field access and focus tracking. */
 type TextFieldName =
@@ -248,53 +247,27 @@ export default function RegisterScreen() {
             name="agbs"
             rules={{ required: "Bitte akzeptiere die AGB" }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <>
-                <Pressable
-                  style={styles.checkboxRow}
-                  onPress={() => onChange(!value)}
-                >
-                  <View style={styles.checkbox}>
-                    {value && (
-                      <MaterialIcons
-                        name="check"
-                        size={18}
-                        color={colors.mintPrimary}
-                      />
-                    )}
-                  </View>
-                  <Text variant="body">Ich akzeptiere die AGB</Text>
-                </Pressable>
-                {error && <Text variant="invalidInput">{error.message}</Text>}
-              </>
+              <CheckboxField
+                label="Ich akzeptiere die AGB"
+                value={value}
+                onChange={onChange}
+                errorMessage={error?.message}
+              />
             )}
           />
 
-          {/* Datenschutz*/}
+          {/* Datenschutz */}
           <Controller
             control={control}
             name="datenschutz"
             rules={{ required: "Bitte akzeptiere die Datenschutzerklärung" }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <>
-                <Pressable
-                  style={styles.checkboxRow}
-                  onPress={() => onChange(!value)}
-                >
-                  <View style={styles.checkbox}>
-                    {value && (
-                      <MaterialIcons
-                        name="check"
-                        size={16}
-                        color={colors.mintPrimary}
-                      />
-                    )}
-                  </View>
-                  <Text variant="body">
-                    Ich akzeptiere die Datenschutzerklärung
-                  </Text>
-                </Pressable>
-                {error && <Text variant="invalidInput">{error.message}</Text>}
-              </>
+              <CheckboxField
+                label="Ich akzeptiere die Datenschutzerklärung"
+                value={value}
+                onChange={onChange}
+                errorMessage={error?.message}
+              />
             )}
           />
         </View>
@@ -330,21 +303,5 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 16,
-  },
-  checkboxRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    marginBottom: 8,
-  },
-  checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 1,
-    backgroundColor: colors.bgSurface,
-    borderColor: colors.border,
-    borderRadius: 4,
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
