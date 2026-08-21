@@ -22,7 +22,7 @@ type Props = TextProps & { variant?: Variant };
  * variants. `variant` controls font size/weight, all other props (style,
  * onPress, numberOfLines, ...) are passed through as-is.
  *
- * @param variant - Typography variant: "h1" | "h2" | "body" (default) | "caption"
+ * @param variant - Typography variant: "h1" | "h2" | "body" (default) | "caption" | "lable" | "requiredLable" | "invalidInput"
  * @example
  * <Text variant="h1">Title</Text>
  */

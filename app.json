@@ -31,7 +31,8 @@
             "./assets/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf"
           ]
         }
-      ]
+      ],
+      "@react-native-vector-icons/material-icons"
     ]
   }
 }

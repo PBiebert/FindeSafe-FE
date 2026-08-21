@@ -2,6 +2,11 @@ import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
 import { colors } from "../themes/colors";
 import { Text } from "./text";
 
+/**
+ * Props of the custom FormField component.
+ * Combines all props of the native <TextInput> component (TextInputProps)
+ * with additional label, required, errorMessage and isFocused props.
+ */
 type Props = TextInputProps & {
   label: string;
   required?: boolean;
@@ -9,6 +14,19 @@ type Props = TextInputProps & {
   isFocused: boolean;
 };
 
+/**
+ * Wrapper that combines a label, a native <TextInput> with a focus border
+ * and an error message into one component. Holds no state or validation
+ * logic itself - value, errorMessage and isFocused come from the caller
+ * (typically a react-hook-form Controller, see RegisterScreen.tsx).
+ *
+ * @param label - Field label, shown above the input
+ * @param required - Adds a required marker (*) next to the label
+ * @param errorMessage - Error text, hidden (but space still reserved) when undefined
+ * @param isFocused - Highlights the input border when true
+ * @example
+ * <FormField label="Vorname" required value={value} onChangeText={onChange} isFocused={isFocused} />
+ */
 export function FormField({
   label,
   required,
@@ -26,10 +44,7 @@ export function FormField({
         style={[styles.textInput, isFocused && styles.inputActive, style]}
         {...textInputProps}
       />
-      <Text
-        variant="invalidInput"
-        style={!errorMessage && styles.notVisible}
-      >
+      <Text variant="invalidInput" style={!errorMessage && styles.dNone}>
         {errorMessage ?? " "}
       </Text>
     </View>
@@ -56,7 +71,7 @@ const styles = StyleSheet.create({
     borderColor: colors.mintPrimary,
     borderWidth: 1,
   },
-  notVisible: {
+  dNone: {
     opacity: 0,
   },
 });

@@ -6,24 +6,53 @@ import {
   Image,
   ScrollView,
   KeyboardAvoidingView,
+  Pressable,
 } from "react-native";
 import { colors } from "../../themes/colors";
 import { Text } from "../../components/text";
 import { FormField } from "../../components/form-field";
+import MaterialIcons from "@react-native-vector-icons/material-icons";
 
-type FieldName =
+/** Union of text field names, used for type-safe field access and focus tracking. */
+type TextFieldName =
   | "vorname"
   | "nachname"
   | "email"
   | "passwort"
   | "passwortWiederholen";
 
-type FormValues = Record<FieldName, string>;
+/** Union of checkbox field names (no focus state, no text input). */
+type CheckboxFieldName = "agbs" | "datenschutz";
 
+/**
+ * Form values: text fields as string, checkbox fields as boolean.
+ * Record<FieldName, string> alone doesn't fit here since not every field
+ * has the same value type.
+ */
+type FormValues = Record<TextFieldName, string> &
+  Record<CheckboxFieldName, boolean>;
+
+/**
+ * Registration screen. Each field is bound to react-hook-form via a
+ * Controller; values and validation errors live in its internal state
+ * instead of local useState. Only the focus state (which field is
+ * currently active, for the border style) is tracked locally, since
+ * react-hook-form has no concept of focus.
+ *
+ * @example
+ * <RegisterScreen />
+ */
 export default function RegisterScreen() {
-  const [focusedField, setFocusedField] = useState<FieldName | null>(null);
+  /** Currently focused text field name, or null. Only drives the border style. */
+  const [focusedField, setFocusedField] = useState<TextFieldName | null>(null);
 
-  const { control, getValues } = useForm<FormValues>({
+  const {
+    control,
+    getValues,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<FormValues>({
     mode: "onBlur",
     defaultValues: {
       vorname: "",
@@ -31,8 +60,13 @@ export default function RegisterScreen() {
       email: "",
       passwort: "",
       passwortWiederholen: "",
+      agbs: false,
+      datenschutz: false,
     },
   });
+
+  const termsAccepted = watch("agbs");
+  const privacyAccepted = watch("datenschutz");
 
   return (
     <KeyboardAvoidingView
@@ -57,6 +91,7 @@ export default function RegisterScreen() {
             Registrieren Sie sich:
           </Text>
 
+          {/* Vorname */}
           <Controller
             control={control}
             name="vorname"
@@ -82,6 +117,7 @@ export default function RegisterScreen() {
             )}
           />
 
+          {/* Nachname */}
           <Controller
             control={control}
             name="nachname"
@@ -107,6 +143,7 @@ export default function RegisterScreen() {
             )}
           />
 
+          {/* E-Mail */}
           <Controller
             control={control}
             name="email"
@@ -140,6 +177,7 @@ export default function RegisterScreen() {
             )}
           />
 
+          {/* Password */}
           <Controller
             control={control}
             name="passwort"
@@ -172,6 +210,7 @@ export default function RegisterScreen() {
             )}
           />
 
+          {/* Password wiederholen */}
           <Controller
             control={control}
             name="passwortWiederholen"
@@ -200,6 +239,62 @@ export default function RegisterScreen() {
                   onBlur();
                 }}
               />
+            )}
+          />
+
+          {/* AGBs */}
+          <Controller
+            control={control}
+            name="agbs"
+            rules={{ required: "Bitte akzeptiere die AGB" }}
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <>
+                <Pressable
+                  style={styles.checkboxRow}
+                  onPress={() => onChange(!value)}
+                >
+                  <View style={styles.checkbox}>
+                    {value && (
+                      <MaterialIcons
+                        name="check"
+                        size={18}
+                        color={colors.mintPrimary}
+                      />
+                    )}
+                  </View>
+                  <Text variant="body">Ich akzeptiere die AGB</Text>
+                </Pressable>
+                {error && <Text variant="invalidInput">{error.message}</Text>}
+              </>
+            )}
+          />
+
+          {/* Datenschutz*/}
+          <Controller
+            control={control}
+            name="datenschutz"
+            rules={{ required: "Bitte akzeptiere die Datenschutzerklärung" }}
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <>
+                <Pressable
+                  style={styles.checkboxRow}
+                  onPress={() => onChange(!value)}
+                >
+                  <View style={styles.checkbox}>
+                    {value && (
+                      <MaterialIcons
+                        name="check"
+                        size={16}
+                        color={colors.mintPrimary}
+                      />
+                    )}
+                  </View>
+                  <Text variant="body">
+                    Ich akzeptiere die Datenschutzerklärung
+                  </Text>
+                </Pressable>
+                {error && <Text variant="invalidInput">{error.message}</Text>}
+              </>
             )}
           />
         </View>
@@ -235,5 +330,21 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 16,
+  },
+  checkboxRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginBottom: 8,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderWidth: 1,
+    backgroundColor: colors.bgSurface,
+    borderColor: colors.border,
+    borderRadius: 4,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
