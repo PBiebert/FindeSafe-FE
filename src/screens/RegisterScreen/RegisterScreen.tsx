@@ -11,6 +11,7 @@ import { colors } from "../../themes/colors";
 import { Text } from "../../components/text";
 import { FormField } from "../../components/form-field";
 import { CheckboxField } from "../../components/checkbox-field";
+import { PrimaryButton } from "../../components/primary-button";
 
 /** Union of text field names, used for type-safe field access and focus tracking. */
 type TextFieldName =
@@ -49,8 +50,7 @@ export default function RegisterScreen() {
     control,
     getValues,
     handleSubmit,
-    watch,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting, isValid },
   } = useForm<FormValues>({
     mode: "onBlur",
     defaultValues: {
@@ -64,8 +64,9 @@ export default function RegisterScreen() {
     },
   });
 
-  const termsAccepted = watch("agbs");
-  const privacyAccepted = watch("datenschutz");
+  const onSubmit = async (values: FormValues) => {
+    console.log(values);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -270,6 +271,13 @@ export default function RegisterScreen() {
               />
             )}
           />
+
+          <PrimaryButton
+            title="Registrieren"
+            isDisabled={!isValid || isSubmitting}
+            onPress={handleSubmit(onSubmit)}
+            style={styles.submitButton}
+          />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -303,5 +311,8 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 16,
+  },
+  submitButton: {
+    marginTop: 12,
   },
 });
