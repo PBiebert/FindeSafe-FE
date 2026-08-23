@@ -3,9 +3,9 @@ import { colors } from "../themes/colors";
 import { Text } from "./text";
 
 /**
- * Props of the custom FormField component.
- * Combines all props of the native <TextInput> component (TextInputProps)
- * with additional label, required, errorMessage and isFocused props.
+ * Props der eigenen FormField-Komponente.
+ * Kombiniert alle Props der nativen <TextInput>-Komponente (TextInputProps)
+ * mit zusätzlichen Props label, required, errorMessage und isFocused.
  */
 type Props = TextInputProps & {
   label: string;
@@ -15,15 +15,16 @@ type Props = TextInputProps & {
 };
 
 /**
- * Wrapper that combines a label, a native <TextInput> with a focus border
- * and an error message into one component. Holds no state or validation
- * logic itself - value, errorMessage and isFocused come from the caller
- * (typically a react-hook-form Controller, see RegisterScreen.tsx).
+ * Wrapper, der ein Label, eine native <TextInput> mit Fokus-Rahmen und
+ * eine Fehlermeldung zu einer Komponente kombiniert. Hält selbst keinen
+ * State oder Validierungslogik - value, errorMessage und isFocused kommen
+ * vom Aufrufer (typischerweise ein react-hook-form Controller, siehe
+ * RegisterScreen.tsx).
  *
- * @param label - Field label, shown above the input
- * @param required - Adds a required marker (*) next to the label
- * @param errorMessage - Error text, hidden (but space still reserved) when undefined
- * @param isFocused - Highlights the input border when true
+ * @param label - Feldbeschriftung, über dem Input angezeigt
+ * @param required - Fügt eine Pflichtfeld-Markierung (*) neben dem Label hinzu
+ * @param errorMessage - Fehlertext, ausgeblendet (aber Platz bleibt reserviert), wenn undefined
+ * @param isFocused - Hebt den Rahmen des Inputs hervor, wenn true
  * @example
  * <FormField label="Vorname" required value={value} onChangeText={onChange} isFocused={isFocused} />
  */

@@ -3,7 +3,6 @@ import { Controller, useForm } from "react-hook-form";
 import {
   View,
   StyleSheet,
-  Image,
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
@@ -12,8 +11,9 @@ import { Text } from "../../components/text";
 import { FormField } from "../../components/form-field";
 import { CheckboxField } from "../../components/checkbox-field";
 import { PrimaryButton } from "../../components/primary-button";
+import { Logo } from "../../components/logo";
 
-/** Union of text field names, used for type-safe field access and focus tracking. */
+/** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName =
   | "vorname"
   | "nachname"
@@ -21,29 +21,29 @@ type TextFieldName =
   | "passwort"
   | "passwortWiederholen";
 
-/** Union of checkbox field names (no focus state, no text input). */
+/** Union der Checkbox-Feldnamen (kein Fokus-Status, keine Texteingabe). */
 type CheckboxFieldName = "agbs" | "datenschutz";
 
 /**
- * Form values: text fields as string, checkbox fields as boolean.
- * Record<FieldName, string> alone doesn't fit here since not every field
- * has the same value type.
+ * Formularwerte: Textfelder als string, Checkbox-Felder als boolean.
+ * Record<FieldName, string> allein passt hier nicht, da nicht jedes Feld
+ * denselben Werttyp hat.
  */
 type FormValues = Record<TextFieldName, string> &
   Record<CheckboxFieldName, boolean>;
 
 /**
- * Registration screen. Each field is bound to react-hook-form via a
- * Controller; values and validation errors live in its internal state
- * instead of local useState. Only the focus state (which field is
- * currently active, for the border style) is tracked locally, since
- * react-hook-form has no concept of focus.
+ * Registrierungs-Screen. Jedes Feld ist über einen Controller an
+ * react-hook-form gebunden; Werte und Validierungsfehler leben in dessen
+ * internem State statt in lokalem useState. Nur der Fokus-Status (welches
+ * Feld gerade aktiv ist, für den Rahmenstil) wird lokal gehalten, da
+ * react-hook-form kein Konzept von Fokus kennt.
  *
  * @example
  * <RegisterScreen />
  */
 export default function RegisterScreen() {
-  /** Currently focused text field name, or null. Only drives the border style. */
+  /** Aktuell fokussiertes Textfeld, oder null. Steuert nur den Rahmenstil. */
   const [focusedField, setFocusedField] = useState<TextFieldName | null>(null);
 
   const {
@@ -78,13 +78,7 @@ export default function RegisterScreen() {
         contentContainerStyle={styles.contentContainer}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.logoContainer}>
-          <Image
-            source={require("./../../../assets/icons/logo.png")}
-            style={styles.logo}
-          />
-          <Text variant="h1">FindeSafe</Text>
-        </View>
+        <Logo />
 
         <View style={styles.form}>
           <Text variant="h1" style={styles.title}>
@@ -292,16 +286,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     alignItems: "center",
     paddingBottom: 40,
-  },
-  logoContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 50,
-    gap: 8,
-  },
-  logo: {
-    width: 80,
-    height: 80,
   },
   form: {
     width: "90%",

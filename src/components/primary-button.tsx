@@ -2,20 +2,21 @@ import { Pressable, PressableProps, StyleSheet } from "react-native";
 import { colors } from "../themes/colors";
 import { Text } from "./text";
 
-/** Props of the custom PrimaryButton component. */
+/** Props der eigenen PrimaryButton-Komponente. */
 type Props = Omit<PressableProps, "disabled"> & {
   title: string;
   isDisabled?: boolean;
 };
 
 /**
- * App-wide primary action button. `isDisabled` only controls the visual
- * style (mint vs. elevated/disabled look) - onPress still fires so the
- * caller can show validation feedback (e.g. via react-hook-form's
- * handleSubmit) instead of the press silently doing nothing.
+ * App-weiter primärer Aktionsbutton. `isDisabled` steuert nur den
+ * visuellen Stil (mint vs. elevated/disabled Look) - onPress feuert
+ * trotzdem, damit der Aufrufer Validierungsfeedback anzeigen kann (z. B.
+ * über react-hook-forms handleSubmit), statt dass der Press stillschweigend
+ * nichts tut.
  *
- * @param title - Button label
- * @param isDisabled - Shows the disabled style when true
+ * @param title - Button-Beschriftung
+ * @param isDisabled - Zeigt den Disabled-Stil, wenn true
  * @example
  * <PrimaryButton title="Registrieren" isDisabled={!isValid} onPress={handleSubmit(onSubmit)} />
  */

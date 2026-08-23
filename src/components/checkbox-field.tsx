@@ -3,7 +3,7 @@ import { colors } from "../themes/colors";
 import { Text } from "./text";
 import MaterialIcons from "@react-native-vector-icons/material-icons";
 
-/** Props of the custom CheckboxField component. */
+/** Props der eigenen CheckboxField-Komponente. */
 type Props = {
   label: string;
   value: boolean;
@@ -12,16 +12,16 @@ type Props = {
 };
 
 /**
- * Wrapper that combines a checkbox (box + checkmark icon, toggled via
- * Pressable), its label and an error message into one component. Holds no
- * state or validation logic itself - value, onChange and errorMessage come
- * from the caller (typically a react-hook-form Controller, see
- * RegisterScreen.tsx).
+ * Wrapper, der eine Checkbox (Box + Häkchen-Icon, umgeschaltet über
+ * Pressable), ihr Label und eine Fehlermeldung zu einer Komponente
+ * kombiniert. Hält selbst keinen State oder Validierungslogik - value,
+ * onChange und errorMessage kommen vom Aufrufer (typischerweise ein
+ * react-hook-form Controller, siehe RegisterScreen.tsx).
  *
- * @param label - Text shown next to the checkbox
- * @param value - Whether the checkbox is currently checked
- * @param onChange - Called with the new value when the checkbox is toggled
- * @param errorMessage - Error text, hidden (but space still reserved) when undefined
+ * @param label - Text neben der Checkbox
+ * @param value - Ob die Checkbox aktuell aktiviert ist
+ * @param onChange - Wird mit dem neuen Wert aufgerufen, wenn die Checkbox umgeschaltet wird
+ * @param errorMessage - Fehlertext, ausgeblendet (aber Platz bleibt reserviert), wenn undefined
  * @example
  * <CheckboxField label="Ich akzeptiere die AGB" value={value} onChange={onChange} />
  */

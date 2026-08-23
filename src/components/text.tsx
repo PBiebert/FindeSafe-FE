@@ -11,20 +11,20 @@ type Variant =
   | "invalidInput";
 
 /**
- * Props of the custom Text component.
- * Combines all props of the native <Text> component (TextProps) with an
- * additional, optional `variant` prop.
+ * Props der eigenen Text-Komponente.
+ * Kombiniert alle Props der nativen <Text>-Komponente (TextProps) mit
+ * einem zusätzlichen, optionalen `variant`-Prop.
  */
 type Props = TextProps & { variant?: Variant };
 
 /**
- * Wrapper around the native <Text> component with predefined typography
- * variants. `variant` controls font size/weight, all other props (style,
- * onPress, numberOfLines, ...) are passed through as-is.
+ * Wrapper um die native <Text>-Komponente mit vordefinierten Typografie-
+ * Varianten. `variant` steuert Schriftgröße/-gewicht, alle anderen Props
+ * (style, onPress, numberOfLines, ...) werden unverändert durchgereicht.
  *
- * @param variant - Typography variant: "h1" | "h2" | "body" (default) | "caption" | "lable" | "requiredLable" | "invalidInput"
+ * @param variant - Typografie-Variante: "h1" | "h2" | "body" (Standard) | "caption" | "lable" | "requiredLable" | "invalidInput"
  * @example
- * <Text variant="h1">Title</Text>
+ * <Text variant="h1">Titel</Text>
  */
 export function Text({ variant = "body", style, ...props }: Props) {
   return <RNText {...props} style={[styles[variant], style]} />;
