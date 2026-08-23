@@ -63,7 +63,7 @@ export default function LoginScreen() {
 
         <View style={styles.form}>
           <Text variant="h1" style={styles.title}>
-            Anmelden:
+            Melden Sie sich an:
           </Text>
 
           {/* E-Mail */}
@@ -136,7 +136,7 @@ export default function LoginScreen() {
 
           <Pressable
             style={styles.registerLink}
-            onPress={() => navigation.navigate("Register" as never)}
+            onPress={() => navigation.navigate("Register")}
           >
             <Text variant="body" style={styles.registerLinkText}>
               Noch kein Konto?{" "}
