@@ -41,7 +41,12 @@ export function FormField({
         {label} {required && <Text variant="requiredLable">*</Text>}
       </Text>
       <TextInput
-        style={[styles.textInput, isFocused && styles.inputActive, style]}
+        style={[
+          styles.textInput,
+          isFocused && styles.inputActive,
+          errorMessage && styles.inputInvalid,
+          style,
+        ]}
         {...textInputProps}
       />
       <Text variant="invalidInput" style={!errorMessage && styles.dNone}>
@@ -70,6 +75,9 @@ const styles = StyleSheet.create({
   inputActive: {
     borderColor: colors.mintPrimary,
     borderWidth: 1,
+  },
+  inputInvalid: {
+    borderColor: colors.error,
   },
   dNone: {
     opacity: 0,

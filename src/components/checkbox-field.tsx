@@ -29,7 +29,7 @@ export function CheckboxField({ label, value, onChange, errorMessage }: Props) {
   return (
     <View style={styles.field}>
       <Pressable style={styles.checkboxRow} onPress={() => onChange(!value)}>
-        <View style={styles.checkbox}>
+        <View style={[styles.checkbox, errorMessage && styles.checkboxInvalid]}>
           {value && (
             <MaterialIcons name="check" size={18} color={colors.mintPrimary} />
           )}
@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
+  },
+  checkboxInvalid: {
+    borderColor: colors.error,
   },
   dNone: {
     opacity: 0,
