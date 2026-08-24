@@ -5,6 +5,7 @@ import LoginScreen from "./src/screens/LoginScreen/LoginScreen";
 import AgbScreen from "./src/screens/AgbScreen/AgbScreen";
 import ImprintScreen from "./src/screens/ImprintScreen/ImprintScreen";
 import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen/PrivacyPolicyScreen";
+import WithdrawalScreen from "./src/screens/WithdrawalScreen/WithdrawalScreen";
 
 /** Screens des Root-Stacks und ihre Route-Params (keiner der Screens erwartet aktuell Params). */
 export type RootStackParamList = {
@@ -13,6 +14,7 @@ export type RootStackParamList = {
   AGB: undefined;
   Imprint: undefined;
   PrivacyPolicy: undefined;
+  Withdrawal: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -26,7 +28,7 @@ declare module "@react-navigation/native" {
 function RootStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Imprint"
+      initialRouteName="AGB"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Register" component={RegisterScreen} />
@@ -34,6 +36,7 @@ function RootStack() {
       <Stack.Screen name="AGB" component={AgbScreen} />
       <Stack.Screen name="Imprint" component={ImprintScreen} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />
+      <Stack.Screen name="Withdrawal" component={WithdrawalScreen} />
     </Stack.Navigator>
   );
 }
