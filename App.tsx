@@ -28,7 +28,7 @@ declare module "@react-navigation/native" {
 function RootStack() {
   return (
     <Stack.Navigator
-      initialRouteName="PrivacyPolicy"
+      initialRouteName="Register"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Register" component={RegisterScreen} />

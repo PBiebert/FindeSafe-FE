@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import { colors } from "../themes/colors";
 import { Text } from "./text";
@@ -5,7 +6,7 @@ import MaterialIcons from "@react-native-vector-icons/material-icons";
 
 /** Props der eigenen CheckboxField-Komponente. */
 type Props = {
-  label: string;
+  label: string | ReactNode;
   value: boolean;
   onChange: (value: boolean) => void;
   errorMessage?: string;
@@ -18,7 +19,8 @@ type Props = {
  * onChange und errorMessage kommen vom Aufrufer (typischerweise ein
  * react-hook-form Controller, siehe RegisterScreen.tsx).
  *
- * @param label - Text neben der Checkbox
+ * @param label - Text neben der Checkbox, oder JSX (z. B. mit einem
+ * verschachtelten klickbaren <Text onPress={...}> für einen Link)
  * @param value - Ob die Checkbox aktuell aktiviert ist
  * @param onChange - Wird mit dem neuen Wert aufgerufen, wenn die Checkbox umgeschaltet wird
  * @param errorMessage - Fehlertext, ausgeblendet (aber Platz bleibt reserviert), wenn undefined
@@ -34,7 +36,11 @@ export function CheckboxField({ label, value, onChange, errorMessage }: Props) {
             <MaterialIcons name="check" size={18} color={colors.mintPrimary} />
           )}
         </View>
-        <Text variant="body">{label}</Text>
+        {typeof label === "string" ? (
+          <Text variant="body">{label}</Text>
+        ) : (
+          label
+        )}
       </Pressable>
       <Text variant="invalidInput" style={!errorMessage && styles.dNone}>
         {errorMessage ?? " "}

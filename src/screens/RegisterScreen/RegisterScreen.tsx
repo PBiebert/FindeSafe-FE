@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   StyleSheet,
@@ -43,6 +44,8 @@ type FormValues = Record<TextFieldName, string> &
  * <RegisterScreen />
  */
 export default function RegisterScreen() {
+  const navigation = useNavigation();
+
   /** Aktuell fokussiertes Textfeld, oder null. Steuert nur den Rahmenstil. */
   const [focusedField, setFocusedField] = useState<TextFieldName | null>(null);
 
@@ -243,7 +246,18 @@ export default function RegisterScreen() {
             rules={{ required: "Bitte akzeptiere die AGB" }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <CheckboxField
-                label="Ich akzeptiere die AGB"
+                label={
+                  <Text variant="body">
+                    Ich akzeptiere die{" "}
+                    <Text
+                      variant="body"
+                      style={styles.link}
+                      onPress={() => navigation.navigate("AGB")}
+                    >
+                      AGB
+                    </Text>
+                  </Text>
+                }
                 value={value}
                 onChange={onChange}
                 errorMessage={error?.message}
@@ -258,7 +272,18 @@ export default function RegisterScreen() {
             rules={{ required: "Bitte akzeptiere die Datenschutzerklärung" }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <CheckboxField
-                label="Ich akzeptiere die Datenschutzerklärung"
+                label={
+                  <Text variant="body">
+                    Ich akzeptiere die{" "}
+                    <Text
+                      variant="body"
+                      style={styles.link}
+                      onPress={() => navigation.navigate("PrivacyPolicy")}
+                    >
+                      Datenschutzerklärung
+                    </Text>
+                  </Text>
+                }
                 value={value}
                 onChange={onChange}
                 errorMessage={error?.message}
@@ -298,5 +323,9 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     marginTop: 12,
+  },
+  link: {
+    color: colors.mintPrimary,
+    textDecorationLine: "underline",
   },
 });
