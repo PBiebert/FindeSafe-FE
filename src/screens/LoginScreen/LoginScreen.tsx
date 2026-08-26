@@ -4,12 +4,13 @@ import { useNavigation } from "@react-navigation/native";
 import {
   View,
   StyleSheet,
+  Text,
   ScrollView,
   KeyboardAvoidingView,
   Pressable,
 } from "react-native";
 import { colors } from "../../themes/colors";
-import { Text } from "../../components/text";
+import { text } from "../../themes/text";
 import { FormField } from "../../components/form-field";
 import { PrimaryButton } from "../../components/primary-button";
 import { Logo } from "../../components/logo";
@@ -62,7 +63,7 @@ export default function LoginScreen() {
         <Logo />
 
         <View style={styles.form}>
-          <Text variant="h1" style={styles.title}>
+          <Text style={[text.h1, styles.title]}>
             Melden Sie sich an:
           </Text>
 
@@ -138,9 +139,9 @@ export default function LoginScreen() {
             style={styles.registerLink}
             onPress={() => navigation.navigate("Register")}
           >
-            <Text variant="body" style={styles.registerLinkText}>
+            <Text style={[text.body, styles.registerLinkText]}>
               Noch kein Konto?{" "}
-              <Text variant="lable" style={styles.registerLinkAccent}>
+              <Text style={[text.lable, styles.registerLinkAccent]}>
                 Jetzt registrieren
               </Text>
             </Text>

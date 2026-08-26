@@ -1,6 +1,6 @@
-import { StyleSheet, TextInput, TextInputProps, View } from "react-native";
+import { StyleSheet, Text, TextInput, TextInputProps, View } from "react-native";
 import { colors } from "../themes/colors";
-import { Text } from "./text";
+import { text } from "../themes/text";
 
 /**
  * Props der eigenen FormField-Komponente.
@@ -38,8 +38,8 @@ export function FormField({
 }: Props) {
   return (
     <View style={styles.field}>
-      <Text variant="lable">
-        {label} {required && <Text variant="requiredLable">*</Text>}
+      <Text style={text.lable}>
+        {label} {required && <Text style={text.requiredLable}>*</Text>}
       </Text>
       <TextInput
         style={[
@@ -50,7 +50,7 @@ export function FormField({
         ]}
         {...textInputProps}
       />
-      <Text variant="invalidInput" style={!errorMessage && styles.dNone}>
+      <Text style={[text.invalidInput, !errorMessage && styles.dNone]}>
         {errorMessage ?? " "}
       </Text>
     </View>

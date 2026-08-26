@@ -1,11 +1,11 @@
-import { StyleSheet, View } from "react-native";
-import { Text } from "../../components/text";
+import { StyleSheet, Text, View } from "react-native";
 import { colors } from "../../themes/colors";
+import { text } from "../../themes/text";
 
 export default function ImprintScreen() {
   return (
     <View style={styles.container}>
-      <Text variant="h1">Imprint</Text>
+      <Text style={text.h1}>Imprint</Text>
     </View>
   );
 }

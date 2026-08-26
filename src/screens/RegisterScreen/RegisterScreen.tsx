@@ -4,11 +4,12 @@ import { useNavigation } from "@react-navigation/native";
 import {
   View,
   StyleSheet,
+  Text,
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
 import { colors } from "../../themes/colors";
-import { Text } from "../../components/text";
+import { text } from "../../themes/text";
 import { FormField } from "../../components/form-field";
 import { CheckboxField } from "../../components/checkbox-field";
 import { PrimaryButton } from "../../components/primary-button";
@@ -84,7 +85,7 @@ export default function RegisterScreen() {
         <Logo />
 
         <View style={styles.form}>
-          <Text variant="h1" style={styles.title}>
+          <Text style={[text.h1, styles.title]}>
             Registrieren Sie sich:
           </Text>
 
@@ -247,11 +248,10 @@ export default function RegisterScreen() {
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <CheckboxField
                 label={
-                  <Text variant="body">
+                  <Text style={text.body}>
                     Ich akzeptiere die{" "}
                     <Text
-                      variant="body"
-                      style={styles.link}
+                      style={text.link}
                       onPress={() => navigation.navigate("AGB")}
                     >
                       AGB
@@ -273,11 +273,10 @@ export default function RegisterScreen() {
             render={({ field: { onChange, value }, fieldState: { error } }) => (
               <CheckboxField
                 label={
-                  <Text variant="body">
+                  <Text style={text.body}>
                     Ich akzeptiere die{" "}
                     <Text
-                      variant="body"
-                      style={styles.link}
+                      style={text.link}
                       onPress={() => navigation.navigate("PrivacyPolicy")}
                     >
                       Datenschutzerklärung
@@ -323,9 +322,5 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     marginTop: 12,
-  },
-  link: {
-    color: colors.mintPrimary,
-    textDecorationLine: "underline",
   },
 });

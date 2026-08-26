@@ -1,7 +1,7 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Text } from "../../components/text";
 import { colors } from "../../themes/colors";
+import { text } from "../../themes/text";
 import { Logo } from "../../components/logo";
 
 export default function AgbScreen() {
@@ -13,24 +13,24 @@ export default function AgbScreen() {
       contentContainerStyle={styles.contentContainer}
     >
       <Logo />
-      <Text variant="h1" style={styles.title}>
+      <Text style={[text.h1, styles.title]}>
         Allgemeine Geschäftsbedingungen
       </Text>
-      <Text variant="caption" style={styles.lastUpdated}>
+      <Text style={[text.caption, styles.lastUpdated]}>
         Letzte Aktualisierung: 1. September 2026
       </Text>
 
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Anbieter ist Philipp Alexander Biebert, tätig unter dem Namen FindSafe
         ("wir", "uns", "unser"), ansässig in Deutschland, An der Logleine 7,
         23570 Lübeck.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir betreiben die mobile Anwendung FindSafe (die "App") sowie alle damit
         verbundenen Produkte und Dienstleistungen, auf die diese
         Geschäftsbedingungen verweisen (gemeinsam die "Dienste").
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         FindSafe ermöglicht es Ihnen, Ihren Standort aufzuzeichnen und mit von
         Ihnen ausgewählten Personen zu teilen. Dazu werden Geodaten über Ihr
         Mobilgerät erfasst und in einer Datenbank gespeichert. In Notsituationen
@@ -41,12 +41,12 @@ export default function AgbScreen() {
         einen Bereich mit Hilfsorganisationen, über den Sie passende
         Unterstützung für Ihre persönliche Situation finden können.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Sie erreichen uns telefonisch unter 01737984314, per E-Mail an
         contact@philippbiebert.de oder postalisch unter An der Logleine 7, 23570
         Lübeck.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Diese Geschäftsbedingungen bilden eine rechtsverbindliche Vereinbarung
         zwischen Ihnen und Philipp Alexander Biebert und regeln Ihren Zugriff
         auf und Ihre Nutzung der Dienste. Mit der Nutzung der Dienste bestätigen
@@ -54,14 +54,14 @@ export default function AgbScreen() {
         haben. Stimmen Sie ihnen nicht zu, ist Ihnen die Nutzung der Dienste
         untersagt.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Über geplante Änderungen an den Diensten informieren wir Sie vorab per
         E-Mail an die von Ihnen hinterlegte Adresse. Geänderte Bedingungen
         treten mit ihrer Veröffentlichung oder Benachrichtigung in Kraft. Nutzen
         Sie die Dienste danach weiter, gelten die geänderten Bedingungen als
         akzeptiert.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Die Dienste richten sich an Nutzer ab 16 Jahren. Personen unter 16
         Jahren dürfen die Dienste nur mit vorheriger Einwilligung ihrer Eltern
         oder Erziehungsberechtigten nutzen; diese müssen die
@@ -71,16 +71,16 @@ export default function AgbScreen() {
         DSGVO) und ist unabhängig von etwaigen Altersangaben in den
         Store-Richtlinien von Apple oder Google zu beachten.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir empfehlen, eine Kopie dieser Geschäftsbedingungen für Ihre
         Unterlagen aufzubewahren.
       </Text>
 
       {/* 1. Unsere Dienstleistungen */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         1. Unsere Dienstleistungen
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Die über die Dienste bereitgestellten Informationen sind nicht für
         Personen oder Organisationen in Ländern bestimmt, in denen ihre Nutzung
         gegen geltendes Recht verstößt oder eine Registrierung erfordern würde.
@@ -90,27 +90,27 @@ export default function AgbScreen() {
       </Text>
 
       {/* 2. Geistiges Eigentum */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         2. Geistiges Eigentum
       </Text>
-      <Text variant="lable" style={styles.subTitle}>
+      <Text style={[text.lable, styles.subTitle]}>
         Unser geistiges Eigentum
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir sind Inhaber oder Lizenznehmer sämtlicher Rechte an den Diensten,
         einschließlich Quellcode, Datenbanken, Funktionen, Software, Design,
         sowie Audio-, Video-, Text-, Foto- und Grafikdateien ("Inhalte") und der
         darin enthaltenen Marken und Logos ("Marken").
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Inhalte und Marken sind urheber- und markenrechtlich geschützt und
         werden ausschließlich für Ihre persönliche, nichtkommerzielle Nutzung
         bereitgestellt.
       </Text>
-      <Text variant="lable" style={styles.subTitle}>
+      <Text style={[text.lable, styles.subTitle]}>
         Ihre Nutzung unserer Dienste
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Solange Sie diese Geschäftsbedingungen einhalten, insbesondere den
         Abschnitt "Verbotene Aktivitäten", gewähren wir Ihnen eine nicht
         ausschließliche, nicht übertragbare und widerrufliche Lizenz, um auf die
@@ -118,34 +118,34 @@ export default function AgbScreen() {
         haben, für Ihre persönliche, nichtkommerzielle Nutzung herunterzuladen
         oder auszudrucken.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Ohne unsere vorherige schriftliche Genehmigung dürfen die Dienste,
         Inhalte oder Marken nicht kopiert, reproduziert, veröffentlicht,
         verbreitet, verkauft, lizenziert oder anderweitig kommerziell genutzt
         werden.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Für eine darüberhinausgehende Nutzung wenden Sie sich bitte an
         contact@philippbiebert.de. Erteilen wir eine Erlaubnis zur
         Veröffentlichung oder Vervielfältigung, müssen Sie uns als Eigentümer
         bzw. Lizenzgeber kennzeichnen und alle Urheberrechts- und
         Eigentumshinweise sichtbar lassen.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Alle nicht ausdrücklich gewährten Rechte behalten wir uns vor. Ein
         Verstoß gegen diese Rechte stellt einen wesentlichen Verstoß gegen diese
         Geschäftsbedingungen dar und führt zur sofortigen Beendigung Ihres
         Nutzungsrechts.
       </Text>
-      <Text variant="lable" style={styles.subTitle}>
+      <Text style={[text.lable, styles.subTitle]}>
         Ihre Einsendungen
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Bitte lesen Sie diesen Abschnitt und "Verbotene Aktivitäten" sorgfältig,
         um zu verstehen, welche Rechte Sie uns einräumen und welche Pflichten
         Sie beim Veröffentlichen oder Hochladen von Inhalten haben.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Einsendungen: Senden Sie uns direkt Fragen, Kommentare, Vorschläge oder
         sonstiges Feedback ("Einsendungen"), räumen Sie uns daran ein
         einfaches, zeitlich und räumlich unbeschränktes Nutzungsrecht ein. Wir
@@ -153,14 +153,14 @@ export default function AgbScreen() {
         rechtmäßigen Zweck nutzen und verbreiten. Ihr Urheberrecht als solches
         bleibt hiervon unberührt.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Sie sind für Ihre Beiträge verantwortlich: Mit jeder Einsendung
         bestätigen Sie, diese Geschäftsbedingungen gelesen zu haben und
         zuzustimmen, und dass Ihre Inhalte nicht rechtswidrig, hasserfüllt,
         schädlich, verleumderisch, obszön, missbräuchlich, diskriminierend,
         bedrohlich, sexuell explizit, falsch oder irreführend sind.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Soweit gesetzlich zulässig, verzichten Sie auf die Geltendmachung
         Ihrer Urheberpersönlichkeitsrechte an solchen Einsendungen, soweit
         dies für die vorgenannte Nutzung erforderlich ist. Sie versichern
@@ -170,7 +170,7 @@ export default function AgbScreen() {
         genannten Rechte einzuräumen, und dass die Einsendung keine
         vertraulichen Informationen enthält.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Sie tragen die alleinige Verantwortung für Ihre Einsendungen und
         erklären sich bereit, uns Verluste zu erstatten, die aus einem Verstoß
         gegen diesen Abschnitt, gegen Rechte Dritter oder gegen geltendes Recht
@@ -178,10 +178,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 3. Benutzerdarstellungen */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         3. Benutzerdarstellungen
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Mit der Nutzung der Dienste bestätigen Sie, dass Ihre
         Registrierungsangaben wahr, aktuell und vollständig sind, dass Sie
         geschäftsfähig und mindestens 16 Jahre alt sind, dass Sie – falls
@@ -190,16 +190,16 @@ export default function AgbScreen() {
         Dienste zugreifen, und dass Ihre Nutzung weder gegen diese
         Geschäftsbedingungen noch gegen geltendes Recht verstößt.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Machen Sie falsche oder unvollständige Angaben, können wir Ihr Konto
         sperren oder kündigen und Ihnen die weitere Nutzung verweigern.
       </Text>
 
       {/* 4. Benutzerregistrierung */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         4. Benutzerregistrierung
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Für die Nutzung der Dienste kann eine Registrierung erforderlich sein.
         Sie sind verpflichtet, Ihr Passwort vertraulich zu behandeln, und haften
         für sämtliche Aktivitäten unter Ihrem Konto. Wir können einen von Ihnen
@@ -208,10 +208,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 5. Käufe und Zahlung */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         5. Käufe und Zahlung
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir akzeptieren PayPal als Zahlungsmethode. Sie verpflichten sich,
         aktuelle und korrekte Kauf- und Kontoinformationen anzugeben und diese –
         etwa E-Mail-Adresse und Zahlungsmethode – umgehend zu aktualisieren.
@@ -221,48 +221,47 @@ export default function AgbScreen() {
         wir behalten uns vor, Preise für zukünftige Abrechnungszeiträume zu
         ändern und Sie darüber vorab zu informieren.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Mit Ihrer Bestellung autorisieren Sie uns, den fälligen Betrag über Ihre
         gewählte Zahlungsmethode einzuziehen. Preisfehler können wir auch dann
         noch korrigieren, wenn die Zahlung bereits eingegangen ist.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir behalten uns vor, Bestellungen abzulehnen sowie Mengen pro Person,
         Haushalt oder Bestellung zu begrenzen – auch über mehrere Bestellungen
         mit demselben Konto oder derselben Zahlungsmethode hinweg.
       </Text>
 
       {/* 6. Abonnements */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         6. Abonnements
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Abrechnung und Verlängerung: Ihr Abonnement verlängert sich automatisch,
         bis Sie es kündigen. Sie stimmen zu, dass wir Ihre Zahlungsmethode
         regelmäßig belasten, ohne dass eine erneute Zustimmung für jede einzelne
         Abbuchung erforderlich ist. Der Abrechnungszyklus ist monatlich.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Kostenlose Testversion: Neue Nutzer erhalten eine 30-tägige kostenlose
         Testphase. Nach deren Ende wird das gewählte Abonnement abgerechnet.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Kündigung: Sie können Ihr Abonnement jederzeit über die
         Kündigungsfunktion in Ihrem Profil unter "Abo" kündigen. Die
         Kündigung wird zum Ende des laufenden Zahlungszeitraums wirksam. Bei
         Fragen erreichen Sie uns unter contact@philippbiebert.de.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Gebührenänderungen: Wir können die Abonnementgebühr ändern und
         informieren Sie über Preisänderungen gemäß geltendem Recht.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Widerrufsrecht: Als Verbraucher steht Ihnen bei Abschluss dieses
         Vertrags ein gesetzliches Widerrufsrecht zu. Einzelheiten entnehmen
         Sie bitte unserer{" "}
         <Text
-          variant="body"
-          style={styles.link}
+          style={text.link}
           onPress={() => navigation.navigate("Withdrawal")}
         >
           Widerrufsbelehrung
@@ -271,10 +270,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 7. Software */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         7. Software
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Stellen wir Software im Zusammenhang mit den Diensten bereit und liegt
         ihr eine Endbenutzer-Lizenzvereinbarung ("EULA") bei, regelt diese die
         Nutzung. Andernfalls gewähren wir eine nicht ausschließliche,
@@ -284,10 +283,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 8. Verbotene Aktivitäten */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         8. Verbotene Aktivitäten
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Sie dürfen die Dienste nur zu dem vorgesehenen Zweck nutzen, nicht
         kommerziell ohne unsere Genehmigung. Insbesondere untersagt ist:
         systematisches Abrufen von Daten zum Aufbau eigener Sammlungen oder
@@ -313,10 +312,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 9. Von Benutzern generierte Beiträge */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         9. Von Benutzern generierte Beiträge
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Derzeit bietet der Dienst keine Möglichkeit, eigene Inhalte einzureichen
         oder zu veröffentlichen. Sollten wir diese Möglichkeit künftig anbieten
         ("Beiträge"), versichern Sie mit deren Erstellung, dass diese keine
@@ -328,27 +327,27 @@ export default function AgbScreen() {
       </Text>
 
       {/* 10. Beitragslizenz */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         10. Beitragslizenz
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Sie stimmen zu, dass wir auf die von Ihnen bereitgestellten
         Informationen, personenbezogenen Daten und Einstellungen zugreifen, sie
         speichern, verarbeiten und nutzen dürfen. Übermitteln Sie Vorschläge
         oder Feedback, dürfen wir dieses ohne Entschädigung für jeden Zweck
         verwenden.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir erheben keinen Eigentumsanspruch an Ihren Beiträgen – Sie behalten
         das volle Eigentum daran. Wir haften nicht für Aussagen in Ihren
         Beiträgen; die Verantwortung dafür liegt allein bei Ihnen.
       </Text>
 
       {/* 11. Mobile Anwendungslizenz */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         11. Mobile Anwendungslizenz
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Beim Zugriff über die App gewähren wir Ihnen ein widerrufliches, nicht
         ausschließliches und nicht übertragbares Recht, die App auf Geräten in
         Ihrem Besitz zu installieren und zu nutzen. Untersagt sind insbesondere:
@@ -358,7 +357,7 @@ export default function AgbScreen() {
         durch mehrere Nutzer; sowie die Nutzung zur Entwicklung eines
         konkurrierenden Produkts.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Beim Bezug über den Apple App Store oder Google Play gelten zusätzlich
         deren eigene Nutzungsbedingungen. Für Wartung und Support der App ist
         der App-Vertreiber nicht verantwortlich; bei Gewährleistungsmängeln kann
@@ -369,10 +368,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 12. Websites und Inhalte Dritter */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         12. Websites und Inhalte Dritter
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Die Dienste können Links zu Websites Dritter sowie Inhalte Dritter
         enthalten. Wir prüfen diese nicht und übernehmen keine Verantwortung
         dafür. Verlassen Sie unsere Dienste über solche Links, geschieht dies
@@ -382,10 +381,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 13. Dienstleistungsmanagement */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         13. Dienstleistungsmanagement
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir behalten uns vor, die Dienste auf Verstöße gegen diese
         Geschäftsbedingungen zu überwachen, rechtliche Schritte gegen Verstöße
         einzuleiten, Beiträge nach eigenem Ermessen abzulehnen oder
@@ -395,15 +394,14 @@ export default function AgbScreen() {
       </Text>
 
       {/* 14. Datenschutzrichtlinie */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         14. Datenschutzrichtlinie
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Uns ist Datenschutz wichtig. Mit der Nutzung der Dienste stimmen Sie
         unserer{" "}
         <Text
-          variant="body"
-          style={styles.link}
+          style={text.link}
           onPress={() => navigation.navigate("PrivacyPolicy")}
         >
           Datenschutzerklärung
@@ -415,10 +413,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 15. Laufzeit und Kündigung */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         15. Laufzeit und Kündigung
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Diese Geschäftsbedingungen gelten für die gesamte Dauer Ihrer Nutzung
         der Dienste. Wir können den Zugriff jederzeit und ohne Vorankündigung
         verweigern, insbesondere bei Verstößen gegen diese Bedingungen oder
@@ -429,10 +427,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 16. Änderungen und Unterbrechungen */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         16. Änderungen und Unterbrechungen
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir können die Inhalte der Dienste jederzeit ändern oder entfernen, ohne
         dafür zu haften. Eine ständige Verfügbarkeit können wir nicht
         garantieren; Wartung oder technische Probleme können zu Unterbrechungen
@@ -441,10 +439,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 17. Anwendbares Recht */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         17. Anwendbares Recht
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Diese Geschäftsbedingungen unterliegen deutschem Recht; das UN-Kaufrecht
         (CISG) ist ausgeschlossen. Verbraucher mit gewöhnlichem Aufenthalt in
         der EU genießen zusätzlich den Schutz der zwingenden Vorschriften ihres
@@ -454,10 +452,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 18. Streitbeilegung */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         18. Streitbeilegung
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Bei Streitigkeiten aus diesen Geschäftsbedingungen sind ausschließlich
         die ordentlichen Gerichte gemäß Abschnitt 17 zuständig; ein
         Schiedsverfahren findet nicht statt. Wir sind nicht verpflichtet und
@@ -467,20 +465,20 @@ export default function AgbScreen() {
       </Text>
 
       {/* 19. Korrekturen */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         19. Korrekturen
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Informationen in den Diensten können Tippfehler oder Ungenauigkeiten
         enthalten, etwa bei Beschreibungen oder Preisen. Wir behalten uns vor,
         diese jederzeit ohne Vorankündigung zu korrigieren.
       </Text>
 
       {/* 20. Haftungsausschluss */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         20. Haftungsausschluss
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Die Dienste werden im Ist-Zustand und nach Verfügbarkeit
         bereitgestellt. Soweit gesetzlich zulässig, schließen wir
         Gewährleistungsansprüche aus, insbesondere im Hinblick auf ständige
@@ -490,7 +488,7 @@ export default function AgbScreen() {
         einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung von uns
         beruhen, sowie nicht für Ansprüche nach dem Produkthaftungsgesetz.
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Die Dienste dienen dazu, Ihren Standort mit von Ihnen ausgewählten
         Personen zu teilen und diese zu benachrichtigen, wenn Sie sich
         unwohl fühlen. Sie sind kein Ersatz für einen Notruf und garantieren
@@ -501,10 +499,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 21. Haftungsbeschränkungen */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         21. Haftungsbeschränkungen
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir haften unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie
         für Schäden aus der Verletzung des Lebens, des Körpers oder der
         Gesundheit und nach dem Produkthaftungsgesetz. Bei leicht
@@ -519,10 +517,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 22. Entschädigung */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         22. Entschädigung
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Sie stellen uns sowie unsere Vertreter und Mitarbeiter von Verlusten,
         Schäden und Ansprüchen Dritter frei – einschließlich angemessener
         Anwaltskosten –, die aus Ihrer Nutzung der Dienste, einem Verstoß gegen
@@ -531,10 +529,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 23. Benutzerdaten */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         23. Benutzerdaten
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Wir speichern die von Ihnen übermittelten Daten sowie Daten zu Ihrer
         Nutzung der Dienste. Trotz regelmäßiger Datensicherungen tragen Sie die
         Verantwortung für Ihre übermittelten Daten; für deren Verlust oder
@@ -542,10 +540,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 24. Elektronische Kommunikation */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         24. Elektronische Kommunikation, Transaktionen und Signaturen
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Der Besuch der Dienste, E-Mails an uns und das Ausfüllen von
         Online-Formularen gelten als elektronische Kommunikation. Sie erklären
         sich mit dem Empfang elektronischer Mitteilungen einverstanden und
@@ -554,10 +552,10 @@ export default function AgbScreen() {
       </Text>
 
       {/* 25. Verschiedenes */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         25. Verschiedenes
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Diese Geschäftsbedingungen und alle von uns veröffentlichten Richtlinien
         bilden die gesamte Vereinbarung zwischen Ihnen und uns. Die
         Nichtausübung eines Rechts gilt nicht als Verzicht. Wir können unsere
@@ -569,18 +567,18 @@ export default function AgbScreen() {
       </Text>
 
       {/* 26. Kontaktieren Sie uns */}
-      <Text variant="h2" style={styles.sectionTitle}>
+      <Text style={[text.h2, styles.sectionTitle]}>
         26. Kontaktieren Sie uns
       </Text>
-      <Text variant="body" style={styles.paragraph}>
+      <Text style={[text.body, styles.paragraph]}>
         Bei Fragen oder Beschwerden zu den Diensten erreichen Sie uns unter:
       </Text>
       <View style={styles.contactBlock}>
-        <Text variant="body">Philipp Alexander Biebert</Text>
-        <Text variant="body">An der Logleine 7</Text>
-        <Text variant="body">23570 Lübeck, Deutschland</Text>
-        <Text variant="body">Telefon: 01737984314</Text>
-        <Text variant="body">E-Mail: contact@philippbiebert.de</Text>
+        <Text style={text.body}>Philipp Alexander Biebert</Text>
+        <Text style={text.body}>An der Logleine 7</Text>
+        <Text style={text.body}>23570 Lübeck, Deutschland</Text>
+        <Text style={text.body}>Telefon: 01737984314</Text>
+        <Text style={text.body}>E-Mail: contact@philippbiebert.de</Text>
       </View>
     </ScrollView>
   );
@@ -617,10 +615,6 @@ const styles = StyleSheet.create({
   },
   contactBlock: {
     marginBottom: 12,
-  },
-  link: {
-    color: colors.mintPrimary,
-    textDecorationLine: "underline",
   },
   footer: {
     marginTop: 32,

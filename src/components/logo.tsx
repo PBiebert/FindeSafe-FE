@@ -1,5 +1,5 @@
-import { Image, StyleSheet, View } from "react-native";
-import { Text } from "./text";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { text } from "../themes/text";
 
 /**
  * App-Logo: Icon plus der Schriftzug "FindeSafe", gestapelt und zentriert.
@@ -14,7 +14,7 @@ export function Logo() {
         source={require("../../assets/icons/logo.png")}
         style={styles.logo}
       />
-      <Text variant="h1">FindeSafe</Text>
+      <Text style={text.h1}>FindeSafe</Text>
     </View>
   );
 }

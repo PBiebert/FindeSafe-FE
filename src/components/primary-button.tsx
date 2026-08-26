@@ -1,6 +1,6 @@
-import { Pressable, PressableProps, StyleSheet } from "react-native";
+import { Pressable, PressableProps, StyleSheet, Text } from "react-native";
 import { colors } from "../themes/colors";
-import { Text } from "./text";
+import { text } from "../themes/text";
 
 /** Props der eigenen PrimaryButton-Komponente. */
 type Props = Omit<PressableProps, "disabled"> & {
@@ -31,8 +31,7 @@ export function PrimaryButton({ title, isDisabled, style, ...pressableProps }: P
       {...pressableProps}
     >
       <Text
-        variant="body"
-        style={[styles.label, isDisabled && styles.labelDisabled]}
+        style={[text.body, styles.label, isDisabled && styles.labelDisabled]}
       >
         {title}
       </Text>

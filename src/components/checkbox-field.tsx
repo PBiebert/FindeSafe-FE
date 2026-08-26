@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { colors } from "../themes/colors";
-import { Text } from "./text";
+import { text } from "../themes/text";
 import MaterialIcons from "@react-native-vector-icons/material-icons";
 
 /** Props der eigenen CheckboxField-Komponente. */
@@ -37,12 +37,12 @@ export function CheckboxField({ label, value, onChange, errorMessage }: Props) {
           )}
         </View>
         {typeof label === "string" ? (
-          <Text variant="body">{label}</Text>
+          <Text style={text.body}>{label}</Text>
         ) : (
           label
         )}
       </Pressable>
-      <Text variant="invalidInput" style={!errorMessage && styles.dNone}>
+      <Text style={[text.invalidInput, !errorMessage && styles.dNone]}>
         {errorMessage ?? " "}
       </Text>
     </View>
