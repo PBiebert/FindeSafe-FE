@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { text } from "../themes/text";
+import { spacing } from "../themes/spacing";
 
 /**
  * App-Logo: Icon plus der Schriftzug "FindeSafe", gestapelt und zentriert.
@@ -23,8 +24,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 50,
-    gap: 8,
+    marginTop: spacing.giant,
+    gap: spacing.s,
   },
   logo: {
     width: 80,

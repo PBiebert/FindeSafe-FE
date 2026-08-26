@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet } from "react-native";
 import MaterialIcons from "@react-native-vector-icons/material-icons";
 import { colors } from "../themes/colors";
+import { spacing } from "../themes/spacing";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
@@ -10,7 +11,7 @@ export function BackButton() {
 
   return (
     <Pressable
-      style={[styles.backButton, { top: insets.top + 16 }]}
+      style={[styles.backButton, { top: insets.top + spacing.l }]}
       hitSlop={12}
       onPress={() => navigation.goBack()}
     >
@@ -22,7 +23,7 @@ export function BackButton() {
 const styles = StyleSheet.create({
   backButton: {
     position: "absolute",
-    left: 16,
+    left: spacing.l,
     zIndex: 1,
   },
 });

@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { colors } from "../../themes/colors";
 import { text } from "../../themes/text";
+import { spacing } from "../../themes/spacing";
 import { Logo } from "../../components/logo";
 import { BackButton } from "../../components/back-button";
 
@@ -403,30 +404,30 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bgBase,
   },
   contentContainer: {
-    paddingHorizontal: 24,
-    paddingTop: 24,
-    paddingBottom: 48,
+    paddingHorizontal: spacing.xxl,
+    paddingTop: spacing.xxl,
+    paddingBottom: spacing.giant,
   },
   title: {
-    marginTop: 12,
-    marginBottom: 4,
+    marginTop: spacing.m,
+    marginBottom: spacing.xs,
   },
   lastUpdated: {
-    marginBottom: 20,
+    marginBottom: spacing.xl,
   },
   sectionTitle: {
-    marginTop: 24,
-    marginBottom: 8,
+    marginTop: spacing.xxl,
+    marginBottom: spacing.s,
   },
   subTitle: {
-    marginTop: 12,
-    marginBottom: 4,
+    marginTop: spacing.m,
+    marginBottom: spacing.xs,
   },
   paragraph: {
-    marginBottom: 12,
+    marginBottom: spacing.m,
     lineHeight: 22,
   },
   contactBlock: {
-    marginBottom: 12,
+    marginBottom: spacing.m,
   },
 });

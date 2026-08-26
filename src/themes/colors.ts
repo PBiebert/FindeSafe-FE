@@ -25,4 +25,4 @@ export const colors = {
   // Rahmen
   border: "#3A342E",
   divider: "#26221E",
-};
+} as const;

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TextInput, TextInputProps, View } from "react-native";
 import { colors } from "../themes/colors";
 import { text } from "../themes/text";
+import { spacing } from "../themes/spacing";
 
 /**
  * Props der eigenen FormField-Komponente.
@@ -59,16 +60,16 @@ export function FormField({
 
 const styles = StyleSheet.create({
   field: {
-    marginBottom: 4,
+    marginBottom: spacing.xs,
   },
   textInput: {
     borderWidth: 1,
     borderColor: colors.border,
     borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    marginTop: 6,
-    marginBottom: 4,
+    paddingHorizontal: spacing.m,
+    paddingVertical: spacing.m,
+    marginTop: spacing.s,
+    marginBottom: spacing.xs,
     width: "100%",
     backgroundColor: colors.bgSurface,
     color: colors.textPrimary,

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { colors } from "../themes/colors";
 import { text } from "../themes/text";
+import { spacing } from "../themes/spacing";
 import MaterialIcons from "@react-native-vector-icons/material-icons";
 
 /** Props der eigenen CheckboxField-Komponente. */
@@ -51,12 +52,12 @@ export function CheckboxField({ label, value, onChange, errorMessage }: Props) {
 
 const styles = StyleSheet.create({
   field: {
-    marginBottom: 4,
+    marginBottom: spacing.xs,
   },
   checkboxRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: spacing.s,
   },
   checkbox: {
     width: 20,

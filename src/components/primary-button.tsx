@@ -1,6 +1,7 @@
 import { Pressable, PressableProps, StyleSheet, Text } from "react-native";
 import { colors } from "../themes/colors";
 import { text } from "../themes/text";
+import { spacing } from "../themes/spacing";
 
 /** Props der eigenen PrimaryButton-Komponente. */
 type Props = Omit<PressableProps, "disabled"> & {
@@ -42,7 +43,7 @@ export function PrimaryButton({ title, isDisabled, style, ...pressableProps }: P
 const styles = StyleSheet.create({
   button: {
     borderRadius: 12,
-    paddingVertical: 14,
+    paddingVertical: spacing.l,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: colors.mintPrimary,

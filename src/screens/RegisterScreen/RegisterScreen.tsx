@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { colors } from "../../themes/colors";
 import { text } from "../../themes/text";
+import { spacing } from "../../themes/spacing";
 import { FormField } from "../../components/form-field";
 import { CheckboxField } from "../../components/checkbox-field";
 import { PrimaryButton } from "../../components/primary-button";
@@ -309,18 +310,18 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     alignItems: "center",
-    paddingBottom: 40,
+    paddingBottom: spacing.huge,
   },
   form: {
     width: "90%",
     maxWidth: 360,
-    paddingHorizontal: 24,
-    marginTop: 24,
+    paddingHorizontal: spacing.xxl,
+    marginTop: spacing.xxl,
   },
   title: {
-    marginBottom: 16,
+    marginBottom: spacing.l,
   },
   submitButton: {
-    marginTop: 12,
+    marginTop: spacing.m,
   },
 });
