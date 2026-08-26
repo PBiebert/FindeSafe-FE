@@ -14,6 +14,7 @@ import { FormField } from "../../components/form-field";
 import { CheckboxField } from "../../components/checkbox-field";
 import { PrimaryButton } from "../../components/primary-button";
 import { Logo } from "../../components/logo";
+import { BackButton } from "../../components/back-button";
 
 /** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName =
@@ -78,6 +79,7 @@ export default function RegisterScreen() {
       behavior="padding"
       keyboardVerticalOffset={0}
     >
+      <BackButton />
       <ScrollView
         contentContainerStyle={styles.contentContainer}
         keyboardShouldPersistTaps="handled"
@@ -85,9 +87,7 @@ export default function RegisterScreen() {
         <Logo />
 
         <View style={styles.form}>
-          <Text style={[text.h1, styles.title]}>
-            Registrieren Sie sich:
-          </Text>
+          <Text style={[text.h1, styles.title]}>Registrieren Sie sich:</Text>
 
           {/* Vorname */}
           <Controller
