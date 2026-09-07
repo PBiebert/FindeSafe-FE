@@ -409,7 +409,7 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.giant,
   },
   title: {
-    marginTop: spacing.m,
+    marginTop: spacing.xxxl,
     marginBottom: spacing.xs,
   },
   lastUpdated: {
