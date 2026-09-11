@@ -276,3 +276,6 @@ CLAUDE.md
 .vscode/
 README.md
 TODO.txt
+
+#Templates
+ENDPOINT_TEMPLATE.md
