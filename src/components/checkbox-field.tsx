@@ -10,6 +10,7 @@ type Props = {
   label: string | ReactNode;
   value: boolean;
   onChange: (value: boolean) => void;
+  onBlur?: () => void;
   errorMessage?: string;
 };
 
@@ -24,14 +25,28 @@ type Props = {
  * verschachtelten klickbaren <Text onPress={...}> für einen Link)
  * @param value - Ob die Checkbox aktuell aktiviert ist
  * @param onChange - Wird mit dem neuen Wert aufgerufen, wenn die Checkbox umgeschaltet wird
+ * @param onBlur - Wird nach dem Umschalten aufgerufen, damit z. B. react-hook-form
+ * im "onBlur"-Modus das Feld validiert (Pressable feuert sonst nie einen Blur)
  * @param errorMessage - Fehlertext, ausgeblendet (aber Platz bleibt reserviert), wenn undefined
  * @example
  * <CheckboxField label="Ich akzeptiere die AGB" value={value} onChange={onChange} />
  */
-export function CheckboxField({ label, value, onChange, errorMessage }: Props) {
+export function CheckboxField({
+  label,
+  value,
+  onChange,
+  onBlur,
+  errorMessage,
+}: Props) {
   return (
     <View style={styles.field}>
-      <Pressable style={styles.checkboxRow} onPress={() => onChange(!value)}>
+      <Pressable
+        style={styles.checkboxRow}
+        onPress={() => {
+          onChange(!value);
+          onBlur?.();
+        }}
+      >
         <View style={[styles.checkbox, errorMessage && styles.checkboxInvalid]}>
           {value && (
             <MaterialIcons name="check" size={18} color={colors.mintPrimary} />

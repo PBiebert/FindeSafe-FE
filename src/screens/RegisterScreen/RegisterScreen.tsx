@@ -16,6 +16,7 @@ import { CheckboxField } from "../../components/checkbox-field";
 import { PrimaryButton } from "../../components/primary-button";
 import { Logo } from "../../components/logo";
 import { BackButton } from "../../components/back-button";
+import { registerAccount } from "../../services/accountsService";
 
 /** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName =
@@ -71,7 +72,15 @@ export default function RegisterScreen() {
   });
 
   const onSubmit = async (values: FormValues) => {
-    console.log(values);
+    await registerAccount({
+      firstname: values.vorname,
+      lastname: values.nachname,
+      email: values.email,
+      password: values.passwort,
+      password_confirm: values.passwortWiederholen,
+      agb_accepted: values.agbs,
+      privacy_accepted: values.datenschutz,
+    });
   };
 
   return (
@@ -246,7 +255,10 @@ export default function RegisterScreen() {
             control={control}
             name="agbs"
             rules={{ required: "Bitte akzeptiere die AGB" }}
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, value },
+              fieldState: { error },
+            }) => (
               <CheckboxField
                 label={
                   <Text style={text.body}>
@@ -261,6 +273,7 @@ export default function RegisterScreen() {
                 }
                 value={value}
                 onChange={onChange}
+                onBlur={onBlur}
                 errorMessage={error?.message}
               />
             )}
@@ -271,7 +284,10 @@ export default function RegisterScreen() {
             control={control}
             name="datenschutz"
             rules={{ required: "Bitte akzeptiere die Datenschutzerklärung" }}
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
+            render={({
+              field: { onChange, onBlur, value },
+              fieldState: { error },
+            }) => (
               <CheckboxField
                 label={
                   <Text style={text.body}>
@@ -286,6 +302,7 @@ export default function RegisterScreen() {
                 }
                 value={value}
                 onChange={onChange}
+                onBlur={onBlur}
                 errorMessage={error?.message}
               />
             )}
