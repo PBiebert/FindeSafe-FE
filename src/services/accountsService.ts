@@ -1,13 +1,13 @@
 import { API_BASE_URL, REGISTER_ENDPOINT } from "../config/api";
 
 type Account = {
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
-  password_confirm: string;
-  agb_accepted: boolean;
-  privacy_accepted: boolean;
+  confirmPassword: string;
+  agbAccepted: boolean;
+  privacyAccepted: boolean;
 };
 
 type RegisterResponse = {
@@ -23,7 +23,15 @@ export async function registerAccount(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        first_name: data.firstName,
+        last_name: data.lastName,
+        email: data.email,
+        password: data.password,
+        confirm_password: data.confirmPassword,
+        agb_accepted: data.agbAccepted,
+        privacy_accepted: data.privacyAccepted,
+      }),
     });
     const result = await response.json();
 

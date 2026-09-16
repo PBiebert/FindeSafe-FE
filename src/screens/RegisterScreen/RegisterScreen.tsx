@@ -20,14 +20,14 @@ import { registerAccount } from "../../services/accountsService";
 
 /** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName =
-  | "vorname"
-  | "nachname"
+  | "firstName"
+  | "lastName"
   | "email"
-  | "passwort"
-  | "passwortWiederholen";
+  | "password"
+  | "confirmPassword";
 
 /** Union der Checkbox-Feldnamen (kein Fokus-Status, keine Texteingabe). */
-type CheckboxFieldName = "agbs" | "datenschutz";
+type CheckboxFieldName = "agbAccepted" | "privacyAccepted";
 
 /**
  * Formularwerte: Textfelder als string, Checkbox-Felder als boolean.
@@ -61,26 +61,18 @@ export default function RegisterScreen() {
   } = useForm<FormValues>({
     mode: "onBlur",
     defaultValues: {
-      vorname: "",
-      nachname: "",
+      firstName: "",
+      lastName: "",
       email: "",
-      passwort: "",
-      passwortWiederholen: "",
-      agbs: false,
-      datenschutz: false,
+      password: "",
+      confirmPassword: "",
+      agbAccepted: false,
+      privacyAccepted: false,
     },
   });
 
   const onSubmit = async (values: FormValues) => {
-    await registerAccount({
-      firstname: values.vorname,
-      lastname: values.nachname,
-      email: values.email,
-      password: values.passwort,
-      password_confirm: values.passwortWiederholen,
-      agb_accepted: values.agbs,
-      privacy_accepted: values.datenschutz,
-    });
+    await registerAccount(values);
   };
 
   return (
@@ -102,7 +94,7 @@ export default function RegisterScreen() {
           {/* Vorname */}
           <Controller
             control={control}
-            name="vorname"
+            name="firstName"
             rules={{ required: "Bitte gib deinen Vornamen ein" }}
             render={({
               field: { onChange, onBlur, value },
@@ -115,8 +107,8 @@ export default function RegisterScreen() {
                 value={value}
                 onChangeText={onChange}
                 errorMessage={error?.message}
-                isFocused={focusedField === "vorname"}
-                onFocus={() => setFocusedField("vorname")}
+                isFocused={focusedField === "firstName"}
+                onFocus={() => setFocusedField("firstName")}
                 onBlur={() => {
                   setFocusedField(null);
                   onBlur();
@@ -128,7 +120,7 @@ export default function RegisterScreen() {
           {/* Nachname */}
           <Controller
             control={control}
-            name="nachname"
+            name="lastName"
             rules={{ required: "Bitte gib deinen Nachnamen ein" }}
             render={({
               field: { onChange, onBlur, value },
@@ -141,8 +133,8 @@ export default function RegisterScreen() {
                 value={value}
                 onChangeText={onChange}
                 errorMessage={error?.message}
-                isFocused={focusedField === "nachname"}
-                onFocus={() => setFocusedField("nachname")}
+                isFocused={focusedField === "lastName"}
+                onFocus={() => setFocusedField("lastName")}
                 onBlur={() => {
                   setFocusedField(null);
                   onBlur();
@@ -188,7 +180,7 @@ export default function RegisterScreen() {
           {/* Password */}
           <Controller
             control={control}
-            name="passwort"
+            name="password"
             rules={{
               required: "Bitte gib ein gültiges Passwort ein",
               minLength: {
@@ -208,8 +200,8 @@ export default function RegisterScreen() {
                 value={value}
                 onChangeText={onChange}
                 errorMessage={error?.message}
-                isFocused={focusedField === "passwort"}
-                onFocus={() => setFocusedField("passwort")}
+                isFocused={focusedField === "password"}
+                onFocus={() => setFocusedField("password")}
                 onBlur={() => {
                   setFocusedField(null);
                   onBlur();
@@ -221,11 +213,11 @@ export default function RegisterScreen() {
           {/* Password wiederholen */}
           <Controller
             control={control}
-            name="passwortWiederholen"
+            name="confirmPassword"
             rules={{
               required: "Bitte wiederhole dein Passwort",
               validate: (value) =>
-                value === getValues("passwort") ||
+                value === getValues("password") ||
                 "Die Passwörter stimmen nicht überein",
             }}
             render={({
@@ -240,8 +232,8 @@ export default function RegisterScreen() {
                 value={value}
                 onChangeText={onChange}
                 errorMessage={error?.message}
-                isFocused={focusedField === "passwortWiederholen"}
-                onFocus={() => setFocusedField("passwortWiederholen")}
+                isFocused={focusedField === "confirmPassword"}
+                onFocus={() => setFocusedField("confirmPassword")}
                 onBlur={() => {
                   setFocusedField(null);
                   onBlur();
@@ -253,7 +245,7 @@ export default function RegisterScreen() {
           {/* AGBs */}
           <Controller
             control={control}
-            name="agbs"
+            name="agbAccepted"
             rules={{ required: "Bitte akzeptiere die AGB" }}
             render={({
               field: { onChange, onBlur, value },
@@ -282,7 +274,7 @@ export default function RegisterScreen() {
           {/* Datenschutz */}
           <Controller
             control={control}
-            name="datenschutz"
+            name="privacyAccepted"
             rules={{ required: "Bitte akzeptiere die Datenschutzerklärung" }}
             render={({
               field: { onChange, onBlur, value },
