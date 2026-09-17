@@ -53,6 +53,9 @@ export default function RegisterScreen() {
   /** Aktuell fokussiertes Textfeld, oder null. Steuert nur den Rahmenstil. */
   const [focusedField, setFocusedField] = useState<TextFieldName | null>(null);
 
+  /** Fehlernachricht bei fehlgeschlagener Registrierung, oder null. */
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const {
     control,
     getValues,
@@ -72,7 +75,16 @@ export default function RegisterScreen() {
   });
 
   const onSubmit = async (values: FormValues) => {
-    await registerAccount(values);
+    setSubmitError(null);
+    try {
+      await registerAccount(values);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Es ist ein Fehler aufgetreten.\nBitte versuche es erneut.",
+      );
+    }
   };
 
   return (
@@ -90,7 +102,6 @@ export default function RegisterScreen() {
 
         <View style={styles.form}>
           <Text style={[text.h1, styles.title]}>Registrieren Sie sich:</Text>
-
           {/* Vorname */}
           <Controller
             control={control}
@@ -116,7 +127,6 @@ export default function RegisterScreen() {
               />
             )}
           />
-
           {/* Nachname */}
           <Controller
             control={control}
@@ -142,7 +152,6 @@ export default function RegisterScreen() {
               />
             )}
           />
-
           {/* E-Mail */}
           <Controller
             control={control}
@@ -176,7 +185,6 @@ export default function RegisterScreen() {
               />
             )}
           />
-
           {/* Password */}
           <Controller
             control={control}
@@ -209,7 +217,6 @@ export default function RegisterScreen() {
               />
             )}
           />
-
           {/* Password wiederholen */}
           <Controller
             control={control}
@@ -241,7 +248,6 @@ export default function RegisterScreen() {
               />
             )}
           />
-
           {/* AGBs */}
           <Controller
             control={control}
@@ -270,7 +276,6 @@ export default function RegisterScreen() {
               />
             )}
           />
-
           {/* Datenschutz */}
           <Controller
             control={control}
@@ -299,13 +304,16 @@ export default function RegisterScreen() {
               />
             )}
           />
-
           <PrimaryButton
             title="Registrieren"
             isDisabled={!isValid || isSubmitting}
             onPress={handleSubmit(onSubmit)}
             style={styles.submitButton}
           />
+          {/* Fehlernachricht bei fehlgeschlagener Registrierung anzeigen */}
+          <Text style={[styles.errorMessage, !submitError && styles.dNone]}>
+            {submitError ?? " "}
+          </Text>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -332,5 +340,12 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     marginTop: spacing.m,
+  },
+  errorMessage: {
+    color: colors.error,
+    marginTop: spacing.s,
+  },
+  dNone: {
+    opacity: 0,
   },
 });
