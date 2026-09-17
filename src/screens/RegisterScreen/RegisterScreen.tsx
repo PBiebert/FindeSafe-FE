@@ -60,6 +60,7 @@ export default function RegisterScreen() {
     control,
     getValues,
     handleSubmit,
+    reset,
     formState: { isSubmitting, isValid },
   } = useForm<FormValues>({
     mode: "onBlur",
@@ -78,6 +79,7 @@ export default function RegisterScreen() {
     setSubmitError(null);
     try {
       await registerAccount(values);
+      reset();
     } catch (error) {
       setSubmitError(
         error instanceof Error
