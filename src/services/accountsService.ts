@@ -14,6 +14,18 @@ type RegisterResponse = {
   message: string;
 };
 
+/**
+ * Registriert ein neues Konto beim Backend.
+ *
+ * Wirft einen Error in zwei Fällen:
+ * - Server antwortet mit einem Fehlerstatus (z. B. 400 bei ungültigen
+ *   Eingaben) → Error mit der Server-Message, siehe `if (!response.ok)`.
+ * - Allgemeiner Fehler, z. B. Netzwerkausfall oder ungültiges JSON in der
+ *   Response → wird im `catch` abgefangen und weitergeworfen.
+ *
+ * @param data - Die Registrierungsdaten aus dem Formular.
+ * @returns Die Antwort des Backends bei erfolgreicher Registrierung.
+ */
 export async function registerAccount(
   data: Account,
 ): Promise<RegisterResponse> {
