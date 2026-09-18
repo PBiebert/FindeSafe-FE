@@ -10,6 +10,7 @@ export const layout = StyleSheet.create({
   contentContainer: {
     alignItems: "center",
     paddingBottom: spacing.huge,
-    paddingHorizontal: spacing.xxxl,
+    paddingHorizontal: spacing.xxl,
+    minHeight: "100%",
   },
 });

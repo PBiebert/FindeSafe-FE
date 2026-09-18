@@ -46,9 +46,11 @@ export async function registerAccount(
       }),
     });
     const result = await response.json();
+    console.log(result);
 
     if (!response.ok) {
-      throw new Error(result.message ?? `HTTP-Feher:${response.status}`);
+      const errorMessage = String(Object.values(result)[0]);
+      throw new Error(errorMessage || "Fehler bei der Registrierung");
     }
 
     return result;

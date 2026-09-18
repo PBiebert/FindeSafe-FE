@@ -30,7 +30,7 @@ declare module "@react-navigation/native" {
 function RootStack() {
   return (
     <Stack.Navigator
-      initialRouteName="VerifyEmail"
+      initialRouteName="Login"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Register" component={RegisterScreen} />
