@@ -5,5 +5,6 @@ const API_BASE_URL = __DEV__
   : "https://api.findesafe.de";
 
 const REGISTER_ENDPOINT = "/api/register/";
+const RESEND_VERIFICATION_CODE = "/api/resend-verification-code/";
 
-export { API_BASE_URL, REGISTER_ENDPOINT };
+export { API_BASE_URL, REGISTER_ENDPOINT, RESEND_VERIFICATION_CODE };

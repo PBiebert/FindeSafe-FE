@@ -16,6 +16,7 @@ import { PrimaryButton } from "../components/primary-button";
 import { RootStackParamList } from "../../App";
 import { layout } from "../themes/layout";
 import { BackButton } from "../components/back-button";
+import { ResendVerifyCode } from "../services/accountsService";
 
 type VerifyEmailRouteProp = RouteProp<RootStackParamList, "VerifyEmail">;
 
@@ -34,6 +35,20 @@ export default function VerifyEmailScreen() {
 
   const [code, setCode] = useState("");
   const [isCodeFocused, setIsCodeFocused] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  async function handleResendCode() {
+    setSubmitError(null);
+    try {
+      await ResendVerifyCode({ email });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Es ist ein Fehler aufgetreten.\nBitte versuche es erneut.",
+      );
+    }
+  }
 
   return (
     <KeyboardAvoidingView
@@ -85,6 +100,16 @@ export default function VerifyEmailScreen() {
             }
             style={styles.button}
           />
+          <Text style={text.body}>
+            <Text style={text.link} onPress={handleResendCode}>
+              Neuen Code anfordern
+            </Text>
+          </Text>
+
+          {/* Fehlernachricht bei fehlgeschlagener Registrierung anzeigen */}
+          <Text style={[styles.errorMessage, !submitError && styles.dNone]}>
+            {submitError ?? " "}
+          </Text>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -123,5 +148,13 @@ const styles = StyleSheet.create({
   button: {
     width: "100%",
     maxWidth: 360,
+    marginBottom: spacing.s,
+  },
+  errorMessage: {
+    color: colors.error,
+    marginTop: spacing.s,
+  },
+  dNone: {
+    opacity: 0,
   },
 });

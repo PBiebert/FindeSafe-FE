@@ -1,4 +1,8 @@
-import { API_BASE_URL, REGISTER_ENDPOINT } from "../config/api";
+import {
+  API_BASE_URL,
+  REGISTER_ENDPOINT,
+  RESEND_VERIFICATION_CODE,
+} from "../config/api";
 
 type Account = {
   firstName: string;
@@ -10,7 +14,15 @@ type Account = {
   privacyAccepted: boolean;
 };
 
+type ResendVerificationCodeData = {
+  email: string;
+};
+
 type RegisterResponse = {
+  message: string;
+};
+
+type ResendVerifyCodeResponse = {
   message: string;
 };
 
@@ -19,7 +31,8 @@ type RegisterResponse = {
  *
  * Wirft einen Error in zwei Fällen:
  * - Server antwortet mit einem Fehlerstatus (z. B. 400 bei ungültigen
- *   Eingaben) → Error mit der Server-Message, siehe `if (!response.ok)`.
+ *   Eingaben) → Error mit der ersten Fehlermeldung aus der Server-Antwort,
+ *   siehe `if (!response.ok)`.
  * - Allgemeiner Fehler, z. B. Netzwerkausfall oder ungültiges JSON in der
  *   Response → wird im `catch` abgefangen und weitergeworfen.
  *
@@ -46,8 +59,6 @@ export async function registerAccount(
       }),
     });
     const result = await response.json();
-    console.log(result);
-
     if (!response.ok) {
       const errorMessage = String(Object.values(result)[0]);
       throw new Error(errorMessage || "Fehler bei der Registrierung");
@@ -56,6 +67,54 @@ export async function registerAccount(
     return result;
   } catch (error) {
     console.error("Fehler beim Registrieren des Kontos:", error);
+    throw error;
+  }
+}
+
+/**
+ * Fordert für ein bestehendes, noch unbestätigtes Konto einen neuen
+ * Bestätigungscode beim Backend an.
+ *
+ * Wirft einen Error in zwei Fällen:
+ * - Server antwortet mit einem Fehlerstatus (z. B. 400 bei ungültigen
+ *   Eingaben) → Error mit der ersten Fehlermeldung aus der Server-Antwort,
+ *   siehe `if (!response.ok)`.
+ * - Allgemeiner Fehler, z. B. Netzwerkausfall oder ungültiges JSON in der
+ *   Response → wird im `catch` abgefangen und weitergeworfen.
+ *
+ * @param data - E-Mail des Kontos, für das ein neuer Code angefordert wird.
+ * @returns Die Antwort des Backends bei erfolgreicher Anfrage.
+ */
+export async function ResendVerifyCode(
+  data: ResendVerificationCodeData,
+): Promise<ResendVerifyCodeResponse> {
+  try {
+    const response = await fetch(`${API_BASE_URL}${RESEND_VERIFICATION_CODE}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: data.email,
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+
+    if (!response.ok) {
+      const errorMessage = String(Object.values(result)[0]);
+      throw new Error(
+        errorMessage ||
+          "Es ist ein Fehler aufgetreten\nBitte versuche es erneut",
+      );
+    }
+
+    return result;
+  } catch (error) {
+    console.error(
+      "Fehler beim Anfordern eines neuen Bestätigungscodes:",
+      error,
+    );
     throw error;
   }
 }
