@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { colors } from "../../themes/colors";
-import { text } from "../../themes/text";
-import { spacing } from "../../themes/spacing";
-import { Logo } from "../../components/logo";
-import { BackButton } from "../../components/back-button";
+import { colors } from "../themes/colors";
+import { text } from "../themes/text";
+import { spacing } from "../themes/spacing";
+import { Logo } from "../components/logo";
+import { BackButton } from "../components/back-button";
 
 export default function WithdrawalScreen() {
   return (

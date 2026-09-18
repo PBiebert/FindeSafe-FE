@@ -1,13 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import RegisterScreen from "./src/screens/RegisterScreen/RegisterScreen";
-import LoginScreen from "./src/screens/LoginScreen/LoginScreen";
-import AgbScreen from "./src/screens/AgbScreen/AgbScreen";
-import ImprintScreen from "./src/screens/ImprintScreen/ImprintScreen";
-import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen/PrivacyPolicyScreen";
-import WithdrawalScreen from "./src/screens/WithdrawalScreen/WithdrawalScreen";
+import RegisterScreen from "./src/screens/RegisterScreen";
+import LoginScreen from "./src/screens/LoginScreen";
+import AgbScreen from "./src/screens/AgbScreen";
+import ImprintScreen from "./src/screens/ImprintScreen";
+import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen";
+import WithdrawalScreen from "./src/screens/WithdrawalScreen";
+import VerifyEmailScreen from "./src/screens/VerifyEmailScreen";
 
-/** Screens des Root-Stacks und ihre Route-Params (keiner der Screens erwartet aktuell Params). */
+/** Screens des Root-Stacks und ihre Route-Params. */
 export type RootStackParamList = {
   Register: undefined;
   Login: undefined;

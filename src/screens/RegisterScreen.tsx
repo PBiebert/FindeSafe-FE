@@ -8,15 +8,15 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
-import { colors } from "../../themes/colors";
-import { text } from "../../themes/text";
-import { spacing } from "../../themes/spacing";
-import { FormField } from "../../components/form-field";
-import { CheckboxField } from "../../components/checkbox-field";
-import { PrimaryButton } from "../../components/primary-button";
-import { Logo } from "../../components/logo";
-import { BackButton } from "../../components/back-button";
-import { registerAccount } from "../../services/accountsService";
+import { colors } from "../themes/colors";
+import { text } from "../themes/text";
+import { spacing } from "../themes/spacing";
+import { FormField } from "../components/form-field";
+import { CheckboxField } from "../components/checkbox-field";
+import { PrimaryButton } from "../components/primary-button";
+import { Logo } from "../components/logo";
+import { BackButton } from "../components/back-button";
+import { registerAccount } from "../services/accountsService";
 
 /** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName =

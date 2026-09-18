@@ -9,12 +9,12 @@ import {
   KeyboardAvoidingView,
   Pressable,
 } from "react-native";
-import { colors } from "../../themes/colors";
-import { text } from "../../themes/text";
-import { spacing } from "../../themes/spacing";
-import { FormField } from "../../components/form-field";
-import { PrimaryButton } from "../../components/primary-button";
-import { Logo } from "../../components/logo";
+import { colors } from "../themes/colors";
+import { text } from "../themes/text";
+import { spacing } from "../themes/spacing";
+import { FormField } from "../components/form-field";
+import { PrimaryButton } from "../components/primary-button";
+import { Logo } from "../components/logo";
 
 /** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName = "email" | "passwort";
@@ -64,9 +64,7 @@ export default function LoginScreen() {
         <Logo />
 
         <View style={styles.form}>
-          <Text style={[text.h1, styles.title]}>
-            Melden Sie sich an:
-          </Text>
+          <Text style={[text.h1, styles.title]}>Melden Sie sich an:</Text>
 
           {/* E-Mail */}
           <Controller

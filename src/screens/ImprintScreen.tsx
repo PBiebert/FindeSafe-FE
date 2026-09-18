@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
-import { colors } from "../../themes/colors";
-import { text } from "../../themes/text";
+import { colors } from "../themes/colors";
+import { text } from "../themes/text";
 
 export default function ImprintScreen() {
   return (
