@@ -17,6 +17,7 @@ import { PrimaryButton } from "../components/primary-button";
 import { Logo } from "../components/logo";
 import { BackButton } from "../components/back-button";
 import { registerAccount } from "../services/accountsService";
+import { layout } from "../themes/layout";
 
 /** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName =
@@ -91,13 +92,13 @@ export default function RegisterScreen() {
 
   return (
     <KeyboardAvoidingView
-      style={styles.container}
+      style={layout.container}
       behavior="padding"
       keyboardVerticalOffset={0}
     >
       <BackButton />
       <ScrollView
-        contentContainerStyle={styles.contentContainer}
+        contentContainerStyle={layout.contentContainer}
         keyboardShouldPersistTaps="handled"
       >
         <Logo />
@@ -323,18 +324,9 @@ export default function RegisterScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgBase,
-  },
-  contentContainer: {
-    alignItems: "center",
-    paddingBottom: spacing.huge,
-  },
   form: {
-    width: "90%",
+    width: "100%",
     maxWidth: 360,
-    paddingHorizontal: spacing.xxl,
     marginTop: spacing.xxl,
   },
   title: {

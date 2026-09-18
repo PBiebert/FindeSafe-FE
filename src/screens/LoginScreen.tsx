@@ -15,6 +15,7 @@ import { spacing } from "../themes/spacing";
 import { FormField } from "../components/form-field";
 import { PrimaryButton } from "../components/primary-button";
 import { Logo } from "../components/logo";
+import { layout } from "../themes/layout";
 
 /** Union der Textfeldnamen, für typsicheren Feldzugriff und Fokus-Tracking. */
 type TextFieldName = "email" | "passwort";
@@ -53,12 +54,12 @@ export default function LoginScreen() {
 
   return (
     <KeyboardAvoidingView
-      style={styles.container}
+      style={layout.container}
       behavior="padding"
       keyboardVerticalOffset={0}
     >
       <ScrollView
-        contentContainerStyle={styles.contentContainer}
+        contentContainerStyle={layout.contentContainer}
         keyboardShouldPersistTaps="handled"
       >
         <Logo />
@@ -152,18 +153,9 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgBase,
-  },
-  contentContainer: {
-    alignItems: "center",
-    paddingBottom: spacing.huge,
-  },
   form: {
-    width: "90%",
+    width: "100%",
     maxWidth: 360,
-    paddingHorizontal: spacing.xxl,
     marginTop: spacing.xxl,
   },
   title: {
