@@ -16,6 +16,7 @@ export type RootStackParamList = {
   Imprint: undefined;
   PrivacyPolicy: undefined;
   Withdrawal: undefined;
+  VerifyEmail: { email: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -29,7 +30,7 @@ declare module "@react-navigation/native" {
 function RootStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="VerifyEmail"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Register" component={RegisterScreen} />
@@ -38,6 +39,7 @@ function RootStack() {
       <Stack.Screen name="Imprint" component={ImprintScreen} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />
       <Stack.Screen name="Withdrawal" component={WithdrawalScreen} />
+      <Stack.Screen name="VerifyEmail" component={VerifyEmailScreen} />
     </Stack.Navigator>
   );
 }
