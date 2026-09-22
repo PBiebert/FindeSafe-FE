@@ -6,5 +6,11 @@ const API_BASE_URL = __DEV__
 
 const REGISTER_ENDPOINT = "/api/register/";
 const RESEND_VERIFICATION_CODE = "/api/resend-verification-code/";
+const ACCOUNT_VERIFICATION_ENDPOINT = "/api/account-verification/";
 
-export { API_BASE_URL, REGISTER_ENDPOINT, RESEND_VERIFICATION_CODE };
+export {
+  API_BASE_URL,
+  REGISTER_ENDPOINT,
+  RESEND_VERIFICATION_CODE,
+  ACCOUNT_VERIFICATION_ENDPOINT,
+};

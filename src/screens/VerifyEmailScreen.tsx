@@ -16,7 +16,7 @@ import { PrimaryButton } from "../components/primary-button";
 import { RootStackParamList } from "../../App";
 import { layout } from "../themes/layout";
 import { BackButton } from "../components/back-button";
-import { ResendVerifyCode } from "../services/accountsService";
+import { ResendVerifyCode, verifyAccount } from "../services/accountsService";
 
 type VerifyEmailRouteProp = RouteProp<RootStackParamList, "VerifyEmail">;
 
@@ -41,6 +41,20 @@ export default function VerifyEmailScreen() {
     setSubmitError(null);
     try {
       await ResendVerifyCode({ email });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Es ist ein Fehler aufgetreten.\nBitte versuche es erneut.",
+      );
+    }
+  }
+
+  async function handleVerifyAccount() {
+    setSubmitError(null);
+    try {
+      await verifyAccount({ email, code });
+      navigation.reset({ index: 0, routes: [{ name: "Login" }] });
     } catch (error) {
       setSubmitError(
         error instanceof Error
@@ -95,9 +109,7 @@ export default function VerifyEmailScreen() {
           <PrimaryButton
             title="Bestätigen"
             isDisabled={!code}
-            onPress={() =>
-              navigation.reset({ index: 0, routes: [{ name: "Login" }] })
-            }
+            onPress={handleVerifyAccount}
             style={styles.button}
           />
           <Text style={text.body}>

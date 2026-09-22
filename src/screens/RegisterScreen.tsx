@@ -66,13 +66,13 @@ export default function RegisterScreen() {
   } = useForm<FormValues>({
     mode: "onBlur",
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      agbAccepted: false,
-      privacyAccepted: false,
+      firstName: "test",
+      lastName: "test",
+      email: "test@test.de",
+      password: "123456789",
+      confirmPassword: "123456789",
+      agbAccepted: true,
+      privacyAccepted: true,
     },
   });
 
@@ -80,6 +80,7 @@ export default function RegisterScreen() {
     setSubmitError(null);
     try {
       await registerAccount(values);
+      navigation.navigate("VerifyEmail", { email: values.email });
       reset();
     } catch (error) {
       setSubmitError(
